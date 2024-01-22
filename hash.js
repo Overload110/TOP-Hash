@@ -33,4 +33,20 @@ class HashMap {
             this.grow();
         }
     }
+
+    get(key) {
+        const targetBucket = this.buckets[this.hash(key)];
+        
+        if (!targetBucket) {
+            return null;
+        }
+        
+        for (const [k, v] of targetBucket) {
+            if (k === key) {
+                return v;
+            }
+        }
+
+        return null;
+    }
 }
