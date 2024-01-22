@@ -105,5 +105,10 @@ class HashMap {
             return bucket ? values.concat(bucket.map(([,v]) => v)) : values;
         }, []);
     }
-    
+
+    entries() {
+        return this.buckets.reduce((entries, bucket) => {
+            return bucket ? entries.concat(bucket) : entries;
+        }, []);
+    }
 }
