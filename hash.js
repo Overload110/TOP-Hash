@@ -99,4 +99,11 @@ class HashMap {
             return bucket ? keys.concat(bucket.map(([k,]) => k)) : keys;
         }, []);
     }
+
+    values() {
+        return this.buckets.reduce((values, bucket) => {
+            return bucket ? values.concat(bucket.map(([,v]) => v)) : values;
+        }, []);
+    }
+    
 }
