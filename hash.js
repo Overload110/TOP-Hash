@@ -49,4 +49,23 @@ class HashMap {
 
         return null;
     }
+
+    remove(key) {
+        const targetIndex = this.hash(key);
+
+        if (!this.buckets[targetIndex]) {
+            return false;
+        }
+
+        for (let i = 0; i < this.buckets[targetIndex].length; i++) {
+            if (this.buckets[targetIndex][i][0] === key) {
+                this.buckets[targetIndex].splice(i, 1);
+                this.size--;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }
