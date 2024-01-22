@@ -34,6 +34,18 @@ class HashMap {
         }
     }
 
+    grow() {
+        const oldBuckets = this.buckets;
+        this.buckets = [];
+        this.size = 0;
+
+        oldBuckets.forEach((bucket) => {
+            if (bucket) {
+                bucket.forEach(([k, v]) => this.set(k, v));
+            }
+        });
+    }
+
     get(key) {
         const targetBucket = this.buckets[this.hash(key)];
         
@@ -72,7 +84,7 @@ class HashMap {
         const targetBucket = this.buckets[this.hash(key)];
         return !!targetBucket && targetBucket.some(([k,]) => k === key);
     }
-    
+
     length() {
         return this.size;
     }
