@@ -68,4 +68,17 @@ class HashMap {
         return false;
     }
 
+    has(key) {
+        const targetBucket = this.buckets[this.hash(key)];
+        return !!targetBucket && targetBucket.some(([k,]) => k === key);
+    }
+    
+    length() {
+        return this.size;
+    }
+
+    clear() {
+        this.buckets = [];
+        this.size = 0;
+    }
 }
