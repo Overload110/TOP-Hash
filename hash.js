@@ -93,4 +93,10 @@ class HashMap {
         this.buckets = [];
         this.size = 0;
     }
+
+    keys() {
+        return this.buckets.reduce((keys, bucket) => {
+            return bucket ? keys.concat(bucket.map(([k,]) => k)) : keys;
+        }, []);
+    }
 }
